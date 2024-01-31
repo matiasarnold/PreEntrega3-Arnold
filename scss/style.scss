@@ -1,0 +1,162 @@
+@import "../scss/utilidades/variables";
+@import "../scss/utilidades/listas";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: "Bluesky";
+    src: url(../fonts/Bluesky.otf);
+}
+
+a {
+    text-decoration: none;
+    color: $color-principal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+ul {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+body {
+    display: grid;
+        grid-template-areas:
+        "header header header"
+        "main main main"
+        "footer footer footer";
+        text-align: center;
+}
+
+header {
+    grid-area: header;
+
+     img {
+        width: 180px;
+     }
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    grid-area: footer;
+    padding: 40px;
+    align-content: center;
+    color: $color-secundario;
+    font-family: "Bluesky";
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(to bottom, rgb(173, 216, 230), rgb(44, 44, 207));
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+fieldset {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.titulo-dos {
+    color: nth($colores, 1);
+    margin-left: 25px;
+    padding: 10px;
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    gap: 20px;
+}
+
+.texto-contacto {
+    color: $color-principal;
+    font-weight: bold;
+    text-align: center;
+}
+
+.redes {
+    color: $color-secundario;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(172, 169, 169);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 200px;
+    inline-size: 100px;
+}
+
+#galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+        img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        }
+}
+
+@media screen and (min-width: 600px) {
+    header, .Boosting, .codPoints, .pavosPoints {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 50%);
+    }
+
+    header .Boosting .codPoints .pavosPoints {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 991px), (max-width: 480px), (min-width: 320px), (min-width: 576px), (min-width: 110px) {
+    body {
+        background-color: white;
+    }
+}
+
+//TODO LO QUE CORRESPONDE A SASS SE UTILIZA DE MANERA LOCAL, la carpeta node_modules, nod, package, package.json no se suben, la carpeta sass puede ser para trabajar en equipo, para el servidor no es necesario sumar las dependencias de SASS, nos suma peso y espacio innecesario, darle gitignore a node_modules por el momento para el curso 
+ //los navegadores no entienden la hoja de estilo de SASS entienden la de CSS
+ //comandos para terminal de SASS:
+ //Primer comando: npm init ( crea el archivo package, presionar enter varias veces y luego darle yes)
+ //Segundo comando: npm install -D node-sass nodemon  ( presionar enter, instala las dependencias oficiales para poder utilizar las utilidades, instala el node y el package ) 
+ //Tercera cosa a hacer: Abrir el package-json y en la linea numero 7 del package.json al lado de las comillas de exit 1" ponemos una , presionamos enter y luego ponemos el script : "build-css": "node-sass --include-path scss/styles.scss css/style.css", (enter y debajo lo siguiente) "watch-css": "nodemon -e scss -x \"npm run build-css\"" (verificar desde donde escribo y hacia donde compila en la linea numero 8 del pckage.json que los nombres de los archivos sean correctos)
+ //Ultimo comando a lanzar en la consola para que se compilen automaticamente los cambios: npm run watch-css ( si crashea es porque no estan correctamente los nombres de los archivos como escribi en el comentario anterior ) 
+ //Cuarta cosa a hacer, abrir el view y poner en un lado el style.scss y en otra el style.css, darle los estilos al scss y se compilan automaticamente en scss
+ //primer utilidad de sass
+ //nesting (anidacióm) trabajar por bloques, declarar hijos dentro de los padres, declarar bien para que se compile con las rutas especificas.
+ //segunda utilidad de sass 
+ //seccionar los estilos, se pueden crear estilos individuales para cada pagina html creando una carpeta y un archivo con _contacto.scss por ejemplo, haciendo un import en el archivo principal de sass del archivo con por ejemplo: @import "carpeta/contacto"; (se puede dejar el archivo principal en blanco y trabajar en los archivos secundarios)
+ //tambien se puede usar para trabajar individualmente clases tambien por ejemplo .header u otras etiquetas de manera global
+ //tercera utilidad de sass _variables.scss (archivo creado en la carpeta extra de sasss) por ejemplo para paletas de colores (https://coolors.co/) ejemplo: $color-principal: #f7B058; $color-secundario: #ffc15e en la practica seria: por ejemplo .importar el archivo en el style.scss variables con: @import "extra"/variables;
+ //las variables admiten un solo valor
+ //y despues en el style.scss texto-contacto { $color-principal; } 
+//IMPORTANTE los import se declaran al inicio del style.scss para que los estilos funcionen correctamente, se puede importar variables en otros archivos de scss con @import "variables";
+//en las variables tambien se pueden manejar medidas tambien por ejemlpo: $medida-principal: 100px; / ejemplo de aplicación: .header-home { width: $medida principal; }
+//Se puede dividir multiplicar, sumar, restar y realizar calculos complicados en las medidas asignadas en sass, ejemplo: ($medida-principal /2) + 100;  ó  $medida-principal + 300;
+ 
+
+
