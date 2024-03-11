@@ -132,12 +132,6 @@ fieldset {
     }
 }
 
-@media (max-width: 991px), (max-width: 480px), (min-width: 320px), (min-width: 576px), (min-width: 110px) {
-    body {
-        background-color: white;
-    }
-}
-
 //TODO LO QUE CORRESPONDE A SASS SE UTILIZA DE MANERA LOCAL, la carpeta node_modules, nod, package, package.json no se suben, la carpeta sass puede ser para trabajar en equipo, para el servidor no es necesario sumar las dependencias de SASS, nos suma peso y espacio innecesario, darle gitignore a node_modules por el momento para el curso 
  //los navegadores no entienden la hoja de estilo de SASS entienden la de CSS
  //comandos para terminal de SASS:

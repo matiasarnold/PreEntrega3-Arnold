@@ -20,7 +20,9 @@ ul {
 
 body {
   display: grid;
-  grid-template-areas: "header header header" "main main main" "footer footer footer";
+  grid-template-areas: "header header header"
+ "main main main"
+ "footer footer footer";
   text-align: center; }
 
 header {
@@ -103,7 +105,3 @@ fieldset {
     grid-template-rows: repeat(2, 50%); }
   header .Boosting .codPoints .pavosPoints {
     grid-column: span 2; } }
-
-@media (max-width: 991px), (max-width: 480px), (min-width: 320px), (min-width: 576px), (min-width: 110px) {
-  body {
-    background-color: white; } }
